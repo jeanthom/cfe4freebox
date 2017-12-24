@@ -9,6 +9,7 @@
 #Toolchain binaries
 hostTools/addvtoken
 hostTools/cmplzma
+hostTools/nvramembed
 
 #Source unwanted files
 cfe/build/broadcom/bcm63xx_ram/build_date.c

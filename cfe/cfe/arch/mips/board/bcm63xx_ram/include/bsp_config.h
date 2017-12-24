@@ -68,6 +68,8 @@
 #define CFG_FATFS               0
 #define CFG_UI                  1      /* Define to enable user interface */
 
+#define CFG_WEB_SERVER          1      /* Enable web server */
+
 #define CFG_MULTI_CPUS          0      /* no multi-cpu support */
 
 #define CFG_HEAP_SIZE           1024   /* heap size in kilobytes */

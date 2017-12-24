@@ -33,8 +33,7 @@
 
 
 /* Define the desired EMAC that the CFE boot loader uses. */
-//#define ENET_USE_EMAC1
-#define ENET_USE_EMAC2
+#define ENET_USE_EMAC1
 
 #if defined(_BCM96338_) || defined(ENET_USE_EMAC1)
 /* CFE Ethernet use EMAC 1 */

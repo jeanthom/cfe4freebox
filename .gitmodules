@@ -1,0 +1,3 @@
+[submodule "hostTools/EndianSwap"]
+	path = hostTools/EndianSwap
+	url = https://github.com/jeanthom/EndianSwap

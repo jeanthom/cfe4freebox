@@ -12,11 +12,14 @@ cd $currdir/hostTools
 gcc -m32 -D _BCM96348_ -I ../shared/opensource/include/bcm963xx/ \
 -o nvramembed nvramembed.c ../shared/opensource/boardparms/bcm963xx/boardparms.c
 
+cd EndianSwap
+make
+
 #####################################
 # -b board ID
 # -n number of maximum mac addresses
 # -m ethernet MAC
 #####################################
 cd $currdir
-hostTools/nvramembed -b "96348GW-11" -n 4 -m 00:11:22:33:44:55 -i cfe6348.bin -o cfe6348-nvr.bin
-
+hostTools/nvramembed -b "FBXV4" -n 1 -m 5a:c9:78:2c:dd:12 -i cfe6348.bin -o cfe6348-nvr.bin
+hostTools/EndianSwap/bin/endianswap -b 16 cfe6348-nvr.bin cfe6348-nvr-endian.bin

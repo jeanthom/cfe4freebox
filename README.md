@@ -1,33 +1,34 @@
-BCM63xx CFE Bootloader
-======================
-This is the buildsystem for the CFE BCM63XX bootloader.
+# BCM6348 CFE Bootloader for Freebox (BCM6348)
 
-You need to have installed gcc, make, libstdc++5, unzip, libz-dev and libc headers.
+This is a custom Broadcom CFE bootloader suited for Freebox SAS hardware (BCM6348 only). It probably breaks compatibility with the original firmware (**you won't be able to use your Freebox on Free's network anymore**), but *it does not matter* since the goal is to flash another OS (eg. OpenWRT) and use your Freebox as an generic embedded Linux platform.
 
-Building
---------
-Go to the main directory for building:
+It has mostly been tested on Freebox V4. It also works on Freebox V5 (but it is not fully supported).
 
-cd cfe/build/broadcom/bcm63xx_rom
+You need to install this in order to compile : gcc, make, libstdc++5, unzip, libz-dev and libc headers. MIPS toolchain for i686 is provided, see [Building](#Building) if you want to replace it with your own toolchain.
 
-make clean
+## Building
 
-make BRCM_CHIP=6338
+Edit build.sh to set the board MAC address, and eventually edit board type. You can then build using the provided shell script :
 
-make BRCM_CHIP=6348
-
-make BRCM_CHIP=6358
-
-Building Script
----------------
-First edit build.sh to match your board's ID and MAC addresses
-
+```
 ./build.sh
+```
 
-Credits
--------
-Broadcom
+A MIPS compiler for x86 GNU/Linux is provided, if you want to use your own you may want to edit the compiler path in `./cfe/build/broadcom/bcm63xx_rom/Makefile` et `./cfe/build/broadcom/bcm63xx_ram/Makefile`.
 
-@danitool
+## Flashing CFE
 
-@Noltari
+JTAG is the recommended method, because in case of software brick you will (hopefully) be able to recover.
+
+## Networking
+
+EMACs are the network interfaces integrated into the BCM6348 chip.
+
+The EMAC parameters are hardcoded in `/shared/opensource/boardparms/bcm963xx/boardparms.c`. Currently only Freebox V4 parameters are stored.
+
+Only **ONE** is EMAC used by the bootloader. You can edit `/cfe/cfe/arch/mips/board/bcm63xx_ram/src/dev_bcm6348_eth.c` to replace constant `ENET_USE_EMAC1` to `ENET_USE_EMAC2`.
+
+## Credits
+
+Based on original work from Broadcom/@danitool/@Noltari.
+

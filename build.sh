@@ -22,4 +22,4 @@ make
 #####################################
 cd $currdir
 hostTools/nvramembed -b "FBXV4" -n 1 -m 5a:c9:78:2c:dd:12 -i cfe6348.bin -o cfe6348-nvr.bin
-hostTools/EndianSwap/bin/endianswap -b 16 cfe6348-nvr.bin cfe6348-nvr-endian.bin
+hostTools/EndianSwap/bin/endianswap -n 16 cfe6348-nvr.bin cfe6348-nvr-endian.bin
